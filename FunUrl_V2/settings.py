@@ -37,7 +37,7 @@ DEBUG = True
 #     "192.168.0.107",
 #     "192.168.11.130",
 # ]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["3.110.50.253"]
 
 # Application definition
 
