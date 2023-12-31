@@ -23,24 +23,26 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
   <style>
-
     body {
       background-image: url("{% static 'assets/img/bg4.jpg'%}");
-      background-size:auto;
+      background-size: auto;
       background-repeat: no-repeat;
     }
+
     .n-bg {
       background-color: rgba(0, 0, 0, 0.100);
       backdrop-filter: blur(3px);
       -webkit-backdrop-filter: blur(3px);
     }
-    .main-card{
-      border-radius:1rem ;
+
+    .main-card {
+      border-radius: 1rem;
       background: rgba(255, 255, 255, 0.753);
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(188, 184, 184, 0.5);
     }
+
     .u-alert {
       color: #e21a2e;
       border-radius: 3px;
@@ -72,7 +74,7 @@
           </li>
         </ul>
         <a href="{% url 'login' %}"><button type="button" class="btn btn-success me-2">Login</button></a>
-        <a href="{% url 'register' %}"><button type="button" class="btn btn-warning">Signup</button></a>
+        <!-- <a href="{% url 'register' %}"><button type="button" class="btn btn-warning">Signup</button></a> -->
       </div>
     </div>
   </nav>
@@ -88,9 +90,9 @@
           <form action="{% url 'create' %}" method="post">{% csrf_token %}
             <div class="input-group input-group-sm mb-3">
               <input type="text" class="form-control" placeholder="{{long_url}}" aria-label="Recipient's username"
-                aria-describedby="button-addon2" required name="urldata" >
+                aria-describedby="button-addon2" required name="urldata">
             </div>
-            
+
             <div class="input-group input-group-sm mb-3">
               <input type="text" class="form-control" readonly value="{{short_url}}" aria-label="Recipient's username"
                 aria-describedby="button-addon2" id="text-to-copy">
@@ -99,12 +101,13 @@
                 Url
             </div>
             {% if messages %}
-                {% for message in messages %}
-                <div class="d-flex align-item-center justify-content-center">
-                <i class="bi bi-exclamation-triangle u-alert me-1"></i><p {% if message.tags %} class="{{ message.tags }} u-alert mt-1" style
-                ="font-size: small;"{% endif %}> {{ message }}</p>
-                </div>
-                {% endfor %}
+            {% for message in messages %}
+            <div class="d-flex align-item-center justify-content-center">
+              <i class="bi bi-exclamation-triangle u-alert me-1"></i>
+              <p {% if message.tags %} class="{{ message.tags }} u-alert mt-1" style="font-size: small;" {% endif %}> {{
+                message }}</p>
+            </div>
+            {% endfor %}
             {% endif %}
 
             <button type="submit" class="btn btn-sm btn-primary">Generate</button>

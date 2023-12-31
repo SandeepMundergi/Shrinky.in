@@ -33,8 +33,9 @@ from django.views.decorators.csrf import csrf_protect
 CACHE_TTL = getattr(settings, "CACHE_TTL", DEFAULT_TIMEOUT)
 
 # ? Constant Domain name
-# domain = "http://127.0.0.1:8000"
-domain = "http://192.168.0.107:8000"
+domain = "http://127.0.0.1:8000"
+# domain = "http://192.168.11.130:8000"
+# domain = "http://192.168.0.107:8000"
 # domain = "http://192.168.29.144:8000"
 # domain = "http://10.0.3.78:8000"
 
@@ -1207,6 +1208,7 @@ def Custom_Link_details_all(request):
     else:
         return redirect("/login")
 
+
 def reports(request, key, id):
     date = generate_date()
     date = date[0].split(",")[0]
@@ -1281,12 +1283,14 @@ def reports(request, key, id):
     }
     return context
 
+
 def public_reports(request, id):
     if request.user.is_authenticated and not request.user.is_staff:
         context = reports(request, 1, id)
         return render(request, "includes/main.html", context)
     else:
         return redirect("/login")
+
 
 def private_reports(request, id):
     if request.user.is_authenticated and not request.user.is_staff:
@@ -1295,6 +1299,7 @@ def private_reports(request, id):
         return render(request, "includes/main.html", context)
     else:
         return redirect("/login")
+
 
 def custom_reports(request, id):
     if request.user.is_authenticated and not request.user.is_staff:
